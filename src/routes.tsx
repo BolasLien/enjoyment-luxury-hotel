@@ -4,8 +4,6 @@ import ExamplePage from './pages/ExamplePage';
 import ExampleSwiperPage from './pages/ExampleSwiperPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import MemberUserInfoPage from './pages/MemberUserInfoPage';
-import MemberUserOrdersPage from './pages/MemberUserOrdersPage';
 
 export default function Router() {
   return (
@@ -15,8 +13,6 @@ export default function Router() {
       <Route path="/exampleSwiperPage" index element={<ExampleSwiperPage />} />
       <Route path="/" index element={<HomePage />} />
       <Route path="/login" index element={<LoginPage />} />
-      <Route path="/member/user-info" index element={<MemberUserInfoPage />} />
-      <Route path="/member/orders" index element={<MemberUserOrdersPage />} />
     </Routes>
   );
 }
