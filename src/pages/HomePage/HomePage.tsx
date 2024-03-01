@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Navbar from '@src/common/Navbar';
 import SectionHero from './components/SectionHero';
 import SectionAbout from './components/SectionAbout';
+import SectionFood from './components/SectionFood';
 import Footer from '@src/common/Footer';
 import { useTheme } from '@mui/material';
 
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Navbar />
         <SectionHero />
         <SectionAbout />
+        <SectionFood />
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
