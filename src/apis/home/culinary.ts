@@ -26,11 +26,11 @@ export type Culinary = {
   updatedAt: string;
 };
 
-type fetchNewsListResponse = {
+type fetchCulinaryListResponse = {
   result: Culinary[];
 };
 
-export const fetchCulinaryList = async (): Promise<fetchNewsListResponse> => {
+export const fetchCulinaryList = async (): Promise<fetchCulinaryListResponse> => {
   const response = await axios.get('/api/v1/home/culinary/');
 
   return response.data;

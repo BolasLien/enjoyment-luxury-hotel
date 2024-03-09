@@ -1,13 +1,20 @@
 import { Box, Grid, Stack, Typography, useTheme } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useRef } from 'react';
-import { Culinary, fetchCulinaryList } from '@src/apis/home/culinary';
+import { fetchCulinaryList } from '@src/apis/home/culinary';
 import HomePageContainer from '@src/common/HomePageContainer';
 import Title from '@src/assets/images/foods/title.png';
 import DecoLine from '@src/assets/images/Line-v.png';
 
-const HorizonScroller = ({ data }: { data: Culinary[] }) =>
-  data.map((foodInfo) => (
+const CulinaryHorizonScroller = () => {
+  const { data } = useQuery({
+    queryKey: ['foods'],
+    queryFn: fetchCulinaryList,
+  });
+
+  if (!data || !data.result) return <div>No data available</div>;
+
+  return data.result.map((foodInfo) => (
     <Box
       key={foodInfo._id}
       sx={{
@@ -49,12 +56,9 @@ const HorizonScroller = ({ data }: { data: Culinary[] }) =>
       </Box>
     </Box>
   ));
+};
 
 const SectionFood = () => {
-  const { data } = useQuery({
-    queryKey: ['foods'],
-    queryFn: fetchCulinaryList,
-  });
   const { palette } = useTheme();
   const foodIntroRef = useRef<HTMLDivElement>(null);
 
@@ -132,11 +136,7 @@ const SectionFood = () => {
               },
             }}
           >
-            {data && data.result ? (
-              <HorizonScroller data={data.result} />
-            ) : (
-              <div>No data available</div>
-            )}
+            <CulinaryHorizonScroller />
           </Stack>
         </Box>
       </HomePageContainer>
