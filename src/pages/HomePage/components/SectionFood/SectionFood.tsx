@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useRef } from 'react';
 import { fetchCulinaryList } from '@src/apis/home/culinary';
 import HomePageContainer from '@src/common/HomePageContainer';
-import Title from '@src/assets/images/foods/title.png';
+import SectionFoodTitle from './components/SectionFoodTitle';
 import DecoLine from '@src/assets/images/Line-v.png';
 
 const CulinaryHorizonScroller = () => {
@@ -107,15 +107,9 @@ const SectionFood = () => {
           <img src={DecoLine} alt="deco" width="100%" height="100%" />
         </Box>
         <Box width="100%">
-          <Box>
-            <Box
-              sx={{ minWidth: '300px', width: '10%', display: 'block', height: 'auto' }}
-              marginBottom={4}
-              component="img"
-              src={Title}
-              alt="title"
-            />
-          </Box>
+          <Stack mr={10} my={10}>
+            <SectionFoodTitle />
+          </Stack>
           <Stack
             className="food-intro"
             ref={foodIntroRef}
