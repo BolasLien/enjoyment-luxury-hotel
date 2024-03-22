@@ -3,11 +3,35 @@ import { Typography, Theme, Box, useTheme, useMediaQuery } from '@mui/material';
 const heroBorder = '#F5F7F9';
 const transparent30 = 'rgba(255, 255, 255, 0.3)';
 
+const customResizeDisplay_100px_B = {
+  fontSize: 100,
+  lineHeight: '120px',
+  fontWeight: 700,
+  '@media (max-width:1440px)': {
+    fontSize: 80,
+    lineHeight: '96px',
+  },
+  '@media (max-width:1280px)': {
+    fontSize: 60,
+    lineHeight: '72px',
+  },
+  '@media (max-width:900px)': {
+    fontSize: 40,
+    lineHeight: '48px',
+  },
+};
+
 const SectionHeroHotelHeadingDesktop = () => {
   return (
-    <Box justifyContent={'center'} alignItems={'center'} width={'100%'} maxWidth={'924px'}>
+    <Box
+      justifyContent={'center'}
+      alignItems={'center'}
+      width={'100%'}
+      maxWidth={'calc(50vw-180px)'}
+    >
       <Box
         width={'100%'}
+        minWidth={'400px'}
         height={'678px'}
         borderRadius={'80px'}
         display={'flex'}
@@ -41,16 +65,20 @@ const SectionHeroHotelHeadingDesktop = () => {
           sx={{ transform: 'translateX(-48px)' }}
         >
           <Typography
-            variant="Display_100px_B"
             mb={1}
-            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+            sx={{
+              ...customResizeDisplay_100px_B,
+              color: (theme: Theme) => `${theme.palette.neutral[0]}`,
+            }}
           >
             高雄
           </Typography>
           <Typography
-            variant="Display_100px_B"
             mb={3}
-            sx={{ color: (theme: Theme) => `${theme.palette.neutral[0]}` }}
+            sx={{
+              ...customResizeDisplay_100px_B,
+              color: (theme: Theme) => `${theme.palette.neutral[0]}`,
+            }}
           >
             豪華住宿之選
           </Typography>
@@ -65,7 +93,7 @@ const SectionHeroHotelHeadingDesktop = () => {
             display={'flex'}
             justifyContent={'flex-end'}
             alignItems={'center'}
-            width={'772px'}
+            width={'100%'}
             height={'116px'}
             borderRadius={'8px'}
             padding={'40px'}
@@ -93,7 +121,7 @@ const SectionHeroHotelHeadingDesktop = () => {
             </Typography>
             <Box
               display={'flex'}
-              width={'150px'}
+              width={'120px'}
               height={'1px'}
               ml={2}
               sx={{
@@ -110,11 +138,16 @@ const SectionHeroHotelHeadingMobile = () => {
   return (
     <Box
       display={'flex'}
-      justifyContent={'flex-end'}
       alignItems={'center'}
       width={'100%'}
       maxWidth={'100vw'}
       padding={'0 20px'}
+      sx={{
+        justifyContent: 'flex-end',
+        '@media (min-width:400px)': {
+          justifyContent: 'center',
+        },
+      }}
     >
       <Box
         width={'290px'}

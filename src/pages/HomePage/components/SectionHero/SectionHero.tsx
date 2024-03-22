@@ -51,7 +51,9 @@ const SectionHero = () => {
           display="flex"
           zIndex={1}
           maxWidth={'1920px'}
+          gap={{ xs: '40px', md: '10vw' }}
           sx={{
+            flexWrap: { xs: 'wrap', md: 'nowrap' },
             padding: { xs: '0', md: '0 80px' },
             top: { xs: '72px', md: 'unset' },
           }}

@@ -15,13 +15,13 @@ import axios from '../axios';
 //   ]
 // }
 
-type News = {
-  _id: string;
+export type News = {
+  _id?: string;
   title: string;
   description: string;
   image: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 type fetchNewsListResponse = News[];
@@ -29,11 +29,9 @@ type fetchNewsByIdResponse = News;
 
 export const fetchNewsList = async (): Promise<fetchNewsListResponse> => {
   const response = await axios.get('/api/v1/home/news/');
-
-  return response.data;
+  return response.data.result;
 };
 export const fetchNewsById = async (id: string): Promise<fetchNewsByIdResponse> => {
   const response = await axios.get(`/api/v1/home/news/${id}`);
-
   return response.data;
 };

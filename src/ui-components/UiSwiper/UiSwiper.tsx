@@ -1,7 +1,8 @@
-import { Box, useTheme } from '@mui/material';
-
+import { useRef, useEffect, useState } from 'react';
+import { Box, useTheme, SxProps, Theme } from '@mui/material';
 // import required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore from 'swiper';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
@@ -17,9 +18,21 @@ interface UiSwiperProps {
   items: UiSwiperItemsProps[];
   navigation?: boolean;
   mask?: boolean;
+  customStyle?: SxProps<Theme> | undefined;
 }
 
-const UiSwiper = ({ items, navigation = false, mask = false }: UiSwiperProps) => {
+const UiSwiper = ({ items, navigation = false, mask = false, customStyle }: UiSwiperProps) => {
+  const [swiperItem, setSwiperItem] = useState<UiSwiperItemsProps[]>([]);
+  const swiperRef = useRef<SwiperCore | null>(null);
+
+  useEffect(() => {
+    setSwiperItem(items);
+    if (swiperRef.current) {
+      swiperRef.current?.update();
+      swiperRef.current?.autoplay?.start();
+    }
+  }, [items]);
+
   const { palette } = useTheme();
   const uiSwiperStyle = {
     '.swiper': {
@@ -100,8 +113,9 @@ const UiSwiper = ({ items, navigation = false, mask = false }: UiSwiperProps) =>
     },
   };
   return (
-    <Box width={'100%'} height={'100%'} sx={uiSwiperStyle}>
+    <Box width={'100%'} height={'100%'} sx={{ ...uiSwiperStyle, ...customStyle }}>
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         slidesPerView={1}
         loop={true}
         autoplay={{
@@ -115,7 +129,7 @@ const UiSwiper = ({ items, navigation = false, mask = false }: UiSwiperProps) =>
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        {items.map(({ src, name }) => (
+        {swiperItem.map(({ src, name }) => (
           <SwiperSlide key={name} className={mask ? 'dark' : ''}>
             <img src={src} alt={name} />
           </SwiperSlide>

@@ -1,2 +1,3 @@
 export * from './news';
-export * from './culinary'
+export * from './culinary';
+export * from './rooms';

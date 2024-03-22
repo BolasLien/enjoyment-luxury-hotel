@@ -2,6 +2,7 @@ import HomePageContainer from '@src/common/HomePageContainer';
 import dBgUrl from '@src/assets/images/desktop/about.png';
 import mBgUrl from '@src/assets/images/mobile/about.png';
 import mLineBgUrl from '@src/assets/images/Line-m.png';
+import LineBgUrl from '@src/assets/images/Line.png';
 import { Box, Stack, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 
 const DesktopWrap = styled('div')(({ theme }) => ({
@@ -87,16 +88,19 @@ const SectionAbout = () => {
         backgroundSize: { md: 'auto 672px', xs: 'contain' },
         backgroundRepeat: 'no-repeat',
         backgroundPosition: { md: 'center 120px', xs: 'center 80px' },
+        position: 'relative',
         '::after': {
-          xs: {
-            content: '""',
-            backgroundSize: 'contain',
-            backgroundImage: `url(${mLineBgUrl})`,
-            position: 'absolute',
-            width: '375px',
-            height: '87px',
-            transform: 'translate(80px, -24px)',
-          },
+          content: '""',
+          backgroundSize: 'cover',
+          backgroundImage: { md: `url(${LineBgUrl})`, xs: `url(${mLineBgUrl})` },
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'left',
+          position: 'absolute',
+          width: { md: '50vw', xs: '295px' },
+          height: { md: '187px', xs: '87px' },
+          bottom: { md: '-367px', xs: '-63px' },
+          right: 0,
+          zIndex: 2,
         },
       }}
     >

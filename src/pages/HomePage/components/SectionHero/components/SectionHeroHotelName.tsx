@@ -3,9 +3,9 @@ import { Grid, Typography, Theme, Box, useTheme, useMediaQuery } from '@mui/mate
 const SectionHeroHotelNameDesktop = () => {
   return (
     <Grid
+      flex={'1 1 100%'}
+      minWidth={'290px'}
       sx={{
-        width: '100%',
-        maxWidth: '636px',
         color: (theme: Theme) => theme.palette.hotelPrimary[100],
       }}
     >

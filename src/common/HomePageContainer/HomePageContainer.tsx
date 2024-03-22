@@ -1,9 +1,13 @@
 import { ReactNode } from 'react';
-import { Container, SxProps } from '@mui/material';
+import { Container, SxProps, ContainerProps } from '@mui/material';
 
-const HomePageContainer = ({ children, sx }: { children: ReactNode; sx?: SxProps }) => {
+const HomePageContainer = ({
+  children,
+  sx,
+  ...props
+}: { children: ReactNode; sx?: SxProps } & ContainerProps) => {
   return (
-    <Container maxWidth={'lg'} disableGutters sx={{ minHeight: '100vh', ...sx }}>
+    <Container maxWidth={'lg'} disableGutters sx={{ minHeight: '100vh', ...sx }} {...props}>
       {children}
     </Container>
   );
