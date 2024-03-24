@@ -43,7 +43,7 @@ import axios from '../axios';
 //     }...
 // }
 
-type Info = {
+export type Info = {
   title: string;
   isProvide: boolean;
 };
@@ -67,7 +67,7 @@ export type Rooms = {
 };
 
 export type fetchRoomsListResponse = Rooms[];
-type fetchRoomsByIdResponse = Rooms;
+export type fetchRoomsByIdResponse = Rooms;
 
 export const fetchRoomsList = async (): Promise<fetchRoomsListResponse> => {
   const response = await axios.get('/api/v1/rooms/');
