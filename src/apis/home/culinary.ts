@@ -16,7 +16,7 @@ import axios from '../axios';
 //   ]
 // }
 
-type culinary = {
+export type Culinary = {
   _id: string;
   title: string;
   description: string;
@@ -26,15 +26,16 @@ type culinary = {
   updatedAt: string;
 };
 
-type fetchCulinaryListResponse = culinary[];
-type fetchCulinaryByIdResponse = culinary;
+type fetchCulinaryListResponse = {
+  result: Culinary[];
+};
 
 export const fetchCulinaryList = async (): Promise<fetchCulinaryListResponse> => {
   const response = await axios.get('/api/v1/home/culinary/');
 
   return response.data;
 };
-export const fetchCulinaryById = async (id: string): Promise<fetchCulinaryByIdResponse> => {
+export const fetchCulinaryById = async (id: string): Promise<Culinary> => {
   const response = await axios.get(`/api/v1/home/culinary/${id}`);
 
   return response.data;
