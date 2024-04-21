@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import MemberUserInfoPage from './pages/MemberUserInfoPage';
 import MemberUserOrdersPage from './pages/MemberUserOrdersPage';
 import RegisterPage from './pages/RegisterPage';
+import RoomPage from './pages/RoomPage';
 
 export default function Router() {
   return (
@@ -20,6 +21,7 @@ export default function Router() {
       <Route path="/member/orders" element={<MemberUserOrdersPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/password" element={<p>忘記密碼，設計稿沒有，之後再處理</p>} />
+      <Route path="/rooms" element={<RoomPage />} />
     </Routes>
   );
 }

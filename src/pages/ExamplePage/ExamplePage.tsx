@@ -49,6 +49,7 @@ const ExamplePage = () => {
           <TabsComponent />
 
           <Divider textAlign="center">RoomInfo</Divider>
+          <RoomProfile outlined areaInfo={'24坪'} bedInfo={'一張大床'} maxPeople={4} />
           <RoomProfile areaInfo={'24坪'} bedInfo={'一張大床'} maxPeople={4} />
           <RoomInfo title={'layoutInfo'} infos={['市景', '獨立衛浴', '客廳', '書房', '樓層電梯']} />
           <RoomInfo
